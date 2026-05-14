@@ -1,7 +1,7 @@
 -- Manages in-memory player data for players currently in this server.
 -- This module does not talk to DataStores; PlayerDatabase owns persistence.
 
-local DefaultData = require(script.Parent.DefaultData)
+local PlayerData = require(script.Parent.PlayerData)
 
 local PlayerDataManager = {}
 
@@ -22,7 +22,7 @@ local function deepCopy(source: any): any
 end
 
 local function reconcileData(data: { [string]: any }): { [string]: any }
-	local reconciled = deepCopy(DefaultData)
+	local reconciled = deepCopy(PlayerData)
 
 	for key, value in data do
 		reconciled[key] = value
@@ -158,7 +158,7 @@ function PlayerDataManager.Heal(player: Player, amount: number): number?
 		return PlayerDataManager.Get(player, "HP")
 	end
 
-	local maxHP = PlayerDataManager.Get(player, "MaxHP") or DefaultData.MaxHP
+	local maxHP = PlayerDataManager.Get(player, "MaxHP") or PlayerData.MaxHP
 	return PlayerDataManager.Add(player, "HP", amount, maxHP)
 end
 
