@@ -1,7 +1,7 @@
 -- Default data for new players.
 -- Keep this module server-only because it describes trusted gameplay state.
 
-local DefaultData = {
+local PlayerData = {
 	MaxHP = 100,
 	HP = 100,
 	Hunger = 100,
@@ -10,4 +10,4 @@ local DefaultData = {
 	Level = 1,
 }
 
-return DefaultData
+return PlayerData
